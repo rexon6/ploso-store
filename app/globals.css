@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #FAF7F2;
+    color: #2C2C2C;
+    font-family: var(--font-dm-sans), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair), Georgia, serif;
+  }
+}
+
+/* Batik-inspired dividers */
+.batik-divider {
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    #D4C5B0 0px, #D4C5B0 8px,
+    transparent 8px, transparent 12px,
+    #D4C5B0 12px, #D4C5B0 14px,
+    transparent 14px, transparent 18px,
+    #D4C5B0 18px, #D4C5B0 30px,
+    transparent 30px, transparent 34px
+  );
+}
+
+.batik-divider-thick {
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    #4A5D3A 0px, #4A5D3A 4px,
+    transparent 4px, transparent 8px,
+    #4A5D3A 8px, #4A5D3A 16px,
+    transparent 16px, transparent 20px,
+    #4A5D3A 20px, #4A5D3A 22px,
+    transparent 22px, transparent 26px
+  );
+}
+
+/* Header blur state */
+.header-scrolled {
+  background: rgba(250, 247, 242, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #E8E2D9;
+}
