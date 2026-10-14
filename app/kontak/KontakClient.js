@@ -206,7 +206,7 @@ export default function KontakClient() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white rounded px-6 py-3 text-xs uppercase tracking-wider font-semibold hover:bg-[#1da851] transition-colors"
                       >
-                        Buka di WhatsApp &rarr;
+                        Buka di WhatsApp
                       </a>
                       <button
                         type="button"
@@ -357,7 +357,7 @@ export default function KontakClient() {
                   rel="noopener noreferrer"
                   className="mt-4 inline-block text-xs uppercase tracking-wider font-semibold text-brand-olive hover:underline"
                 >
-                  Buka di Google Maps &rarr;
+                  Buka di Google Maps
                 </a>
               </div>
             </div>

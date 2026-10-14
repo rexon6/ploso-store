@@ -20,7 +20,7 @@ const timelineItems = [
     colorClass: "text-brand-olive",
     title: "Penguatan Rancang Produk",
     description:
-      "Evolusi kurasi dari cenderamata menjadi produk fungsional harian: sarung tenun songket, sarung batik khas, dan kemeja muslim yang elegan.",
+      "Evolusi kurasi dari cenderamata menjadi produk fungsional harian: Kemeja Sanghai Ploso yang elegan dan nyaman dikenakan.",
   },
   {
     year: "2025",
@@ -102,7 +102,7 @@ export default function TentangPage() {
                     Dokumentasi Nilai
                   </span>
                   <p className="font-serif text-2xl italic leading-snug">
-                    "{storeConfig.tagline}"
+                    &ldquo;{storeConfig.tagline}&rdquo;
                   </p>
                   <p className="text-xs text-brand-cream/80 mt-2 font-sans">
                     {storeConfig.motto}
@@ -210,7 +210,7 @@ export default function TentangPage() {
                 <li className="flex items-start gap-3">
                   <span className="text-brand-olive font-bold">•</span>
                   <span>
-                    Menghasilkan sarung dan busana muslim dengan standar bahan
+                    Menghasilkan kemeja dan busana muslim dengan standar bahan
                     bermutu tinggi dan harga yang berkeadilan.
                   </span>
                 </li>
@@ -271,7 +271,7 @@ export default function TentangPage() {
             Miliki Bagian dari Tradisi
           </h2>
           <p className="text-brand-stone/80 text-base md:text-lg mb-8 max-w-xl mx-auto">
-            Jelajahi ragam sarung batik eksklusif dan busana muslim terbaru yang
+            Jelajahi koleksi Kemeja Sanghai Ploso dan busana muslim terbaru yang
             kami siapkan dengan penuh kehati-hatian.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

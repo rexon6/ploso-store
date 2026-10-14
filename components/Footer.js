@@ -74,26 +74,50 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/katalog?cat=sarung"
+                  href="/katalog?category=kemeja"
                   className="text-brand-cream/70 text-sm hover:text-white transition-colors"
                 >
-                  Sarung Batik &amp; Songket
+                  Kemeja
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/katalog?cat=busana"
+                  href="/katalog?category=sarung"
                   className="text-brand-cream/70 text-sm hover:text-white transition-colors"
                 >
-                  Busana Muslim Modern
+                  Sarung
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/katalog?cat=aksesori"
+                  href="/katalog?category=peci"
                   className="text-brand-cream/70 text-sm hover:text-white transition-colors"
                 >
-                  Aksesori &amp; Merchandise
+                  Peci
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/katalog?category=t-shirt"
+                  className="text-brand-cream/70 text-sm hover:text-white transition-colors"
+                >
+                  T-Shirt
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/katalog?category=merchandise"
+                  className="text-brand-cream/70 text-sm hover:text-white transition-colors"
+                >
+                  Merchandise
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/katalog"
+                  className="text-brand-cream/70 text-sm hover:text-white transition-colors"
+                >
+                  Semua Produk
                 </Link>
               </li>
             </ul>
