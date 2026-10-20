@@ -19,9 +19,7 @@ function CatalogFilterContent({ products, categories }) {
   }, [categoryParam, categories]);
 
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
-  const [selectedSize, setSelectedSize] = useState("all");
   const [selectedPriceRange, setSelectedPriceRange] = useState("all");
-  const [selectedAvailability, setSelectedAvailability] = useState("all");
   const [selectedSort, setSelectedSort] = useState("featured");
 
   // Keep state synced with URL query param if user clicks back/forward
@@ -47,23 +45,11 @@ function CatalogFilterContent({ products, categories }) {
       list = list.filter((p) => p.category.toLowerCase() === selectedCategory.toLowerCase());
     }
 
-    // Filter Size (saat ini produk kemeja all-size/standar)
-    if (selectedSize !== "all") {
-      list = list.filter((p) => p.size === selectedSize);
-    }
-
     // Filter Price
-    if (selectedPriceRange === "under-100k") {
-      list = list.filter((p) => p.price < 100000);
-    } else if (selectedPriceRange === "100k") {
+    if (selectedPriceRange === "100k") {
       list = list.filter((p) => p.price === 100000);
     } else if (selectedPriceRange === "above-100k") {
       list = list.filter((p) => p.price > 100000);
-    }
-
-    // Filter Availability
-    if (selectedAvailability === "in-stock") {
-      list = list.filter((p) => p.inStock !== false);
     }
 
     // Sorting
@@ -75,32 +61,23 @@ function CatalogFilterContent({ products, categories }) {
       list.sort((a, b) => a.name.localeCompare(b.name));
     } else if (selectedSort === "name-desc") {
       list.sort((a, b) => b.name.localeCompare(a.name));
+    } else if (selectedSort === "featured") {
+      list.sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)));
     }
 
     return list;
-  }, [
-    products,
-    selectedCategory,
-    selectedSize,
-    selectedPriceRange,
-    selectedAvailability,
-    selectedSort,
-  ]);
+  }, [products, selectedCategory, selectedPriceRange, selectedSort]);
 
   const resetFilters = () => {
     setSelectedCategory("all");
-    setSelectedSize("all");
     setSelectedPriceRange("all");
-    setSelectedAvailability("all");
     setSelectedSort("featured");
     router.push("/katalog", { scroll: false });
   };
 
   const hasActiveFilter =
     selectedCategory !== "all" ||
-    selectedSize !== "all" ||
     selectedPriceRange !== "all" ||
-    selectedAvailability !== "all" ||
     selectedSort !== "featured";
 
   const activeCategoryObj = categories.find((c) => c.id === selectedCategory);
@@ -111,9 +88,9 @@ function CatalogFilterContent({ products, categories }) {
       {/* Filter Controls Bar */}
       <section className="bg-brand-cream/80 border-b border-brand-warm/40 py-5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
-          <div className="flex flex-wrap items-center gap-3 text-xs md:text-sm">
+          <div className="grid grid-cols-1 gap-3 text-xs sm:flex sm:flex-wrap sm:items-end md:text-sm">
             {/* Category Filter */}
-            <div className="flex items-center gap-1.5">
+            <div className="flex min-w-0 flex-col gap-1 sm:flex-row sm:items-center sm:gap-1.5">
               <label htmlFor="filter-category" className="text-brand-muted font-medium shrink-0">
                 Kategori:
               </label>
@@ -121,7 +98,7 @@ function CatalogFilterContent({ products, categories }) {
                 id="filter-category"
                 value={selectedCategory}
                 onChange={(e) => handleCategoryChange(e.target.value)}
-                className="bg-brand-white border border-brand-warm rounded px-3 py-1.5 text-brand-ink text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-brand-olive cursor-pointer"
+                className="w-full bg-brand-white border border-brand-warm rounded px-3 py-1.5 text-brand-ink text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-brand-olive cursor-pointer sm:w-auto"
               >
                 {categories.map((cat) => {
                   const count =
@@ -137,23 +114,8 @@ function CatalogFilterContent({ products, categories }) {
               </select>
             </div>
 
-            {/* Size Filter */}
-            <div className="flex items-center gap-1.5">
-              <label htmlFor="filter-size" className="text-brand-muted font-medium shrink-0">
-                Ukuran:
-              </label>
-              <select
-                id="filter-size"
-                value={selectedSize}
-                onChange={(e) => setSelectedSize(e.target.value)}
-                className="bg-brand-white border border-brand-warm rounded px-3 py-1.5 text-brand-ink text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-brand-olive cursor-pointer"
-              >
-                <option value="all">Semua Ukuran</option>
-              </select>
-            </div>
-
             {/* Price Filter */}
-            <div className="flex items-center gap-1.5">
+            <div className="flex min-w-0 flex-col gap-1 sm:flex-row sm:items-center sm:gap-1.5">
               <label htmlFor="filter-price" className="text-brand-muted font-medium shrink-0">
                 Harga:
               </label>
@@ -161,31 +123,16 @@ function CatalogFilterContent({ products, categories }) {
                 id="filter-price"
                 value={selectedPriceRange}
                 onChange={(e) => setSelectedPriceRange(e.target.value)}
-                className="bg-brand-white border border-brand-warm rounded px-3 py-1.5 text-brand-ink text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-brand-olive cursor-pointer"
+                className="w-full bg-brand-white border border-brand-warm rounded px-3 py-1.5 text-brand-ink text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-brand-olive cursor-pointer sm:w-auto"
               >
                 <option value="all">Semua Harga</option>
                 <option value="100k">Rp 100.000</option>
-              </select>
-            </div>
-
-            {/* Availability Filter */}
-            <div className="flex items-center gap-1.5">
-              <label htmlFor="filter-availability" className="text-brand-muted font-medium shrink-0">
-                Ketersediaan:
-              </label>
-              <select
-                id="filter-availability"
-                value={selectedAvailability}
-                onChange={(e) => setSelectedAvailability(e.target.value)}
-                className="bg-brand-white border border-brand-warm rounded px-3 py-1.5 text-brand-ink text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-brand-olive cursor-pointer"
-              >
-                <option value="all">Semua</option>
-                <option value="in-stock">Tersedia</option>
+                <option value="above-100k">&gt; Rp 100.000</option>
               </select>
             </div>
 
             {/* Sort Control */}
-            <div className="flex items-center gap-1.5 sm:ml-auto">
+            <div className="flex min-w-0 flex-col gap-1 sm:ml-auto sm:flex-row sm:items-center sm:gap-1.5">
               <label htmlFor="filter-sort" className="text-brand-muted font-medium shrink-0">
                 Urutkan:
               </label>
@@ -193,7 +140,7 @@ function CatalogFilterContent({ products, categories }) {
                 id="filter-sort"
                 value={selectedSort}
                 onChange={(e) => setSelectedSort(e.target.value)}
-                className="bg-brand-white border border-brand-warm rounded px-3 py-1.5 text-brand-ink text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-brand-olive cursor-pointer font-medium"
+                className="w-full bg-brand-white border border-brand-warm rounded px-3 py-1.5 text-brand-ink text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-brand-olive cursor-pointer font-medium sm:w-auto"
               >
                 <option value="featured">Featured</option>
                 <option value="name-asc">Nama (A-Z)</option>
@@ -207,7 +154,7 @@ function CatalogFilterContent({ products, categories }) {
             {hasActiveFilter && (
               <button
                 onClick={resetFilters}
-                className="text-brand-brown hover:text-brand-forest underline text-xs font-sans transition-colors ml-2"
+                className="justify-self-start text-left text-brand-brown hover:text-brand-forest underline text-xs font-sans transition-colors sm:ml-2"
               >
                 Reset Filter
               </button>
@@ -215,7 +162,10 @@ function CatalogFilterContent({ products, categories }) {
           </div>
 
           {/* Active Status Row */}
-          <div className="mt-3 pt-3 border-t border-brand-warm/30 flex items-center justify-between text-xs text-brand-muted">
+          <div
+            aria-live="polite"
+            className="mt-3 pt-3 border-t border-brand-warm/30 flex items-center justify-between text-xs text-brand-muted"
+          >
             <span>
               Menampilkan <strong className="text-brand-forest">{filteredProducts.length}</strong> produk
               {selectedCategory !== "all" && (
@@ -230,7 +180,7 @@ function CatalogFilterContent({ products, categories }) {
       <section className="py-10 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
           {filteredProducts.length === 0 ? (
-            <div className="text-center py-16 bg-brand-white border border-brand-warm/50 rounded p-8 max-w-xl mx-auto shadow-xs">
+            <div className="text-center py-16 bg-brand-white border border-brand-warm/50 rounded p-8 max-w-xl mx-auto shadow-sm">
               <p className="font-serif text-xl text-brand-forest mb-2">
                 Belum Ada Produk
               </p>
@@ -245,7 +195,7 @@ function CatalogFilterContent({ products, categories }) {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+            <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 md:gap-8 lg:grid-cols-4">
               {filteredProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}

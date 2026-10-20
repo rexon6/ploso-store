@@ -49,13 +49,13 @@ export default function KontakClient() {
   return (
     <main>
       {/* Contact Header */}
-      <section className="pt-32 pb-12 md:pt-40 md:pb-16 border-b border-brand-warm/40">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+      <section className="pt-28 pb-12 sm:pt-32 md:pt-40 md:pb-16 border-b border-brand-warm/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
           <div className="max-w-2xl">
-            <p className="text-brand-brown text-sm uppercase tracking-[0.3em] font-sans mb-3">
+            <p className="text-brand-brown text-xs uppercase tracking-[0.3em] font-sans mb-3 sm:text-sm">
               Layanan Pelanggan
             </p>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-forest leading-tight mb-4">
+            <h1 className="font-serif text-3xl text-brand-forest leading-tight mb-4 sm:text-4xl md:text-5xl lg:text-6xl">
               Hubungi Kami
             </h1>
             <p className="text-brand-muted text-base md:text-lg leading-relaxed">
@@ -69,12 +69,12 @@ export default function KontakClient() {
 
       {/* Main Content: Form + Information Grid */}
       <section className="py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
             {/* Left Info Cards */}
             <div className="lg:col-span-5 space-y-8">
               {/* WhatsApp Box */}
-              <div className="p-8 border border-brand-warm/60 rounded bg-brand-white shadow-xs">
+              <div className="p-6 border border-brand-warm/60 rounded bg-brand-white shadow-sm sm:p-8">
                 <span className="text-xs uppercase tracking-widest text-brand-brown block mb-2">
                   Kanal Pemesanan Utama
                 </span>
@@ -94,7 +94,7 @@ export default function KontakClient() {
               </div>
 
               {/* Operational & Address */}
-              <div className="p-8 border border-brand-warm/60 rounded bg-brand-white space-y-6 shadow-xs">
+              <div className="p-6 border border-brand-warm/60 rounded bg-brand-white space-y-6 shadow-sm sm:p-8">
                 <div>
                   <span className="text-xs uppercase tracking-widest text-brand-brown block mb-1">
                     Titik Lokasi
@@ -126,7 +126,15 @@ export default function KontakClient() {
                   <p className="text-brand-muted text-xs mb-3">
                     Ikuti perkembangan koleksi terbaru dan kegiatan kami:
                   </p>
-                  <div className="flex gap-4">
+                  <div className="flex flex-wrap gap-3">
+                    <a
+                      href={storeConfig.socialLinks.youtube}
+                      className="px-3 py-1.5 text-xs border border-brand-warm rounded text-brand-ink hover:border-brand-olive transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      YouTube
+                    </a>
                     <a
                       href={storeConfig.socialLinks.instagram}
                       className="px-3 py-1.5 text-xs border border-brand-warm rounded text-brand-ink hover:border-brand-olive transition-colors"
@@ -143,14 +151,6 @@ export default function KontakClient() {
                     >
                       TikTok
                     </a>
-                    <a
-                      href={storeConfig.socialLinks.facebook}
-                      className="px-3 py-1.5 text-xs border border-brand-warm rounded text-brand-ink hover:border-brand-olive transition-colors"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Facebook
-                    </a>
                   </div>
                 </div>
               </div>
@@ -158,7 +158,7 @@ export default function KontakClient() {
 
             {/* Right: Contact Form */}
             <div className="lg:col-span-7">
-              <div className="p-8 md:p-12 border border-brand-warm/60 rounded bg-brand-white shadow-xs">
+              <div className="p-6 border border-brand-warm/60 rounded bg-brand-white shadow-sm sm:p-8 md:p-12">
                 <span className="text-xs uppercase tracking-widest text-brand-brown block mb-2">
                   Formulir Pesan
                 </span>
@@ -231,6 +231,7 @@ export default function KontakClient() {
                       <input
                         type="text"
                         id="name"
+                        autoComplete="name"
                         value={formData.name}
                         onChange={handleChange}
                         required
@@ -250,6 +251,7 @@ export default function KontakClient() {
                         <input
                           type="email"
                           id="email"
+                          autoComplete="email"
                           value={formData.email}
                           onChange={handleChange}
                           required
@@ -267,6 +269,7 @@ export default function KontakClient() {
                         <input
                           type="tel"
                           id="phone"
+                          autoComplete="tel"
                           value={formData.phone}
                           onChange={handleChange}
                           required
@@ -320,7 +323,7 @@ export default function KontakClient() {
 
                     <button
                       type="submit"
-                      className="w-full bg-brand-olive text-white rounded px-8 py-3.5 uppercase tracking-wider text-xs font-semibold hover:bg-brand-forest transition-colors shadow-xs"
+                      className="w-full bg-brand-olive text-white rounded px-8 py-3.5 uppercase tracking-wider text-xs font-semibold hover:bg-brand-forest transition-colors shadow-sm"
                     >
                       Kirim Pertanyaan
                     </button>
@@ -332,14 +335,14 @@ export default function KontakClient() {
 
           {/* Google Maps Embed / Location Section */}
           <div className="mt-16">
-            <div className="border border-brand-warm/60 rounded overflow-hidden shadow-xs">
+            <div className="border border-brand-warm/60 rounded overflow-hidden shadow-sm">
               <div className="bg-brand-stone/60 p-4 text-center border-b border-brand-warm/60">
                 <span className="text-xs uppercase tracking-wider text-brand-brown font-semibold">
                   Peta Lokasi Layanan
                 </span>
               </div>
               <div
-                className="aspect-[21/9] md:aspect-[3/1] bg-brand-stone flex flex-col items-center justify-center p-6 text-center"
+                className="bg-brand-stone flex flex-col items-center justify-center p-6 py-12 text-center sm:aspect-[21/9] sm:py-6 md:aspect-[3/1]"
                 style={{
                   background:
                     "linear-gradient(135deg, #FAF7F2 0%, #E8E2D9 50%, #D4C5B0 100%)",

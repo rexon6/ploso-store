@@ -10,7 +10,8 @@ export async function generateStaticParams() {
   ];
 }
 
-export default function KategoriPage({ params }) {
-  const cat = params?.kategori ? params.kategori.toLowerCase() : "all";
+export default async function KategoriPage({ params }) {
+  const resolvedParams = await params;
+  const cat = resolvedParams?.kategori ? resolvedParams.kategori.toLowerCase() : "all";
   redirect(`/katalog?category=${cat}`);
 }

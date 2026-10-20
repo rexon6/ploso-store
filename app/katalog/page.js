@@ -4,7 +4,7 @@ import { products, categories, storeConfig } from "@/data/products";
 export const metadata = {
   title: "Katalog Produk",
   description:
-    "Katalog resmi produk Kemeja Sanghai Ploso dan busana modern Ploso Store — Pondok Pesantren Al Falah Ploso.",
+    "Katalog resmi Kemeja Sanghai Ploso dan Sarung Batik Ploso Store — Pondok Pesantren Al Falah Ploso.",
 };
 
 export default function KatalogPage() {
@@ -20,7 +20,7 @@ export default function KatalogPage() {
             ALL PRODUCTS
           </h1>
           <p className="text-brand-muted text-xs md:text-sm max-w-xl mx-auto mt-2">
-            Koleksi Kemeja Sanghai Ploso dengan kerah sanghai elegan dan desain minimalis
+            Koleksi kemeja sanghai dan sarung batik pilihan dari Ploso Store
           </p>
         </div>
       </section>
