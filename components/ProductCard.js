@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ProductCard({ product, showButton = false }) {
+export default function ProductCard({ product }) {
   const { slug, id, name, priceFormatted, image, imageAlt } = product;
   const productHref = `/produk/${slug || id}`;
 
@@ -11,14 +11,14 @@ export default function ProductCard({ product, showButton = false }) {
       className="group flex flex-col h-full bg-brand-white border border-brand-warm/60 rounded overflow-hidden transition-all duration-200 hover:shadow-md hover:border-brand-olive/50"
     >
       {/* Product Image Container */}
-      <div className="aspect-[3/4] w-full bg-brand-cream relative overflow-hidden flex items-center justify-center p-3">
+      <div className="aspect-[3/4] w-full bg-brand-cream relative overflow-hidden flex items-center justify-center p-2 sm:p-3">
         {image ? (
           <Image
             src={image}
             alt={imageAlt || name}
             fill
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            className="object-contain p-2 transition-transform duration-300 ease-out group-hover:scale-105"
+            className="object-contain p-1 transition-transform duration-300 ease-out group-hover:scale-105 sm:p-2"
             quality={90}
           />
         ) : (
@@ -29,7 +29,7 @@ export default function ProductCard({ product, showButton = false }) {
       </div>
 
       {/* Product Info */}
-      <div className="p-3.5 md:p-4 flex flex-col flex-grow bg-brand-white">
+      <div className="p-3 md:p-4 flex flex-col flex-grow bg-brand-white">
         <h3 className="font-serif text-sm md:text-base text-brand-forest group-hover:text-brand-olive transition-colors leading-snug line-clamp-2 min-h-[2.5rem] mb-2">
           {name}
         </h3>

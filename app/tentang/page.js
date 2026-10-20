@@ -68,16 +68,16 @@ export default function TentangPage() {
   return (
     <main>
       {/* Page Header Hero */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24 border-b border-brand-warm/40">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+      <section className="pt-28 pb-14 sm:pt-32 sm:pb-16 md:pt-40 md:pb-24 border-b border-brand-warm/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
           <div className="max-w-3xl">
             <p className="text-brand-brown text-sm uppercase tracking-[0.3em] font-sans mb-4">
               Mengenal Ploso Store
             </p>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-forest leading-tight mb-6">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-brand-forest leading-tight mb-6">
               Tradisi yang Mengakar, Langkah yang Maju
             </h1>
-            <p className="text-brand-muted text-lg md:text-xl leading-relaxed">
+            <p className="text-brand-muted text-base leading-relaxed sm:text-lg md:text-xl">
               Dari momentum satu abad pesantren hingga dedikasi menghadirkan
               busana berkualitas dengan spirit kemandirian.
             </p>
@@ -86,8 +86,8 @@ export default function TentangPage() {
       </section>
 
       {/* Narrative Section: Asal-Usul & Transformasi */}
-      <section className="py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+      <section className="py-16 sm:py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             <div className="lg:col-span-5">
               <div
@@ -148,8 +148,8 @@ export default function TentangPage() {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-20 md:py-28 bg-brand-stone/40 border-y border-brand-warm/40">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+      <section className="py-16 sm:py-20 md:py-28 bg-brand-stone/40 border-y border-brand-warm/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
           <div className="max-w-2xl mb-16">
             <p className="text-brand-brown text-sm uppercase tracking-[0.3em] font-sans mb-3">
               Linimasa
@@ -163,7 +163,7 @@ export default function TentangPage() {
             {timelineItems.map((item, idx) => (
               <div
                 key={idx}
-                className="bg-brand-cream/80 p-8 border border-brand-warm/60 rounded shadow-xs"
+                className="bg-brand-cream/80 p-8 border border-brand-warm/60 rounded shadow-sm"
               >
                 <span
                   className={`font-serif text-3xl block mb-2 ${item.colorClass}`}
@@ -183,10 +183,10 @@ export default function TentangPage() {
       </section>
 
       {/* Visi & Misi */}
-      <section className="py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+      <section className="py-16 sm:py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
-            <div className="p-8 md:p-12 border border-brand-warm/60 rounded bg-brand-white shadow-xs">
+            <div className="p-8 md:p-12 border border-brand-warm/60 rounded bg-brand-white shadow-sm">
               <p className="text-brand-brown text-xs uppercase tracking-[0.25em] font-sans mb-3">
                 Arah Pandang
               </p>
@@ -199,7 +199,7 @@ export default function TentangPage() {
                 menjadi inspirasi kemandirian ekonomi umat.
               </p>
             </div>
-            <div className="p-8 md:p-12 border border-brand-warm/60 rounded bg-brand-white shadow-xs">
+            <div className="p-8 md:p-12 border border-brand-warm/60 rounded bg-brand-white shadow-sm">
               <p className="text-brand-brown text-xs uppercase tracking-[0.25em] font-sans mb-3">
                 Tindakan Nyata
               </p>
@@ -235,8 +235,8 @@ export default function TentangPage() {
       </section>
 
       {/* Nilai-Nilai Brand */}
-      <section className="py-20 md:py-28 bg-brand-white border-t border-brand-warm/40">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+      <section className="py-16 sm:py-20 md:py-28 bg-brand-white border-t border-brand-warm/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
           <div className="max-w-2xl mb-16">
             <p className="text-brand-brown text-sm uppercase tracking-[0.3em] font-sans mb-3">
               Prinsip Kami
@@ -265,7 +265,7 @@ export default function TentangPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-20 md:py-28 bg-brand-forest text-white text-center">
+      <section className="py-16 sm:py-20 md:py-28 bg-brand-forest text-white text-center">
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6">
             Miliki Bagian dari Tradisi

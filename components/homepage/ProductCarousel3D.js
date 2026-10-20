@@ -21,22 +21,22 @@ import Image from "next/image";
 const showcaseItems = [
   {
     id: "hitam",
-    image: "/images/products/kemeja-sanghai-hitam.png",
+    image: "/images/products/kemeja-sanghai-hitam.webp",
     alt: "Kemeja Sanghai Ploso Hitam",
   },
   {
     id: "hijau",
-    image: "/images/products/kemeja-sanghai-hijau.png",
+    image: "/images/products/kemeja-sanghai-hijau.webp",
     alt: "Kemeja Sanghai Ploso Hijau",
   },
   {
     id: "cream",
-    image: "/images/products/kemeja-sanghai-cream.png",
+    image: "/images/products/kemeja-sanghai-cream.webp",
     alt: "Kemeja Sanghai Ploso Cream",
   },
   {
     id: "biru",
-    image: "/images/products/kemeja-sanghai-biru.png",
+    image: "/images/products/kemeja-sanghai-biru.webp",
     alt: "Kemeja Sanghai Ploso Biru",
   },
 ];
@@ -96,7 +96,6 @@ export default function ProductCarousel3D() {
     <div
       role="region"
       aria-label="Showcase Produk Kemeja Sanghai Ploso"
-      aria-live="polite"
       className="relative w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[440px] aspect-[3/4] flex items-center justify-center select-none"
     >
       {/* Soft ambient shadow beneath shirt */}

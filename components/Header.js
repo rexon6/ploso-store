@@ -22,24 +22,36 @@ export default function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
     };
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Tutup menu mobile ketika navigasi berpindah rute
   useEffect(() => {
     setMobileMenuOpen(false);
-    document.body.style.overflow = "";
   }, [pathname]);
 
-  const toggleMobileMenu = () => {
-    const nextState = !mobileMenuOpen;
-    setMobileMenuOpen(nextState);
-    if (nextState) {
-      document.body.style.overflow = "hidden";
-    } else {
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
-    }
+    };
+  }, [mobileMenuOpen]);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen((prev) => !prev);
   };
 
   const isActive = (href) => {
@@ -57,7 +69,7 @@ export default function Header() {
           isScrolled ? "header-scrolled" : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 flex items-center justify-between h-16 md:h-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link
             href="/"
@@ -95,6 +107,7 @@ export default function Header() {
             className="md:hidden flex flex-col justify-center gap-1.5 p-2 focus:outline-none focus:ring-1 focus:ring-brand-olive rounded"
             aria-label={mobileMenuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
             aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             <span
               className={`block w-6 h-0.5 bg-brand-ink transition-transform duration-300 ${
@@ -117,10 +130,11 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-brand-cream flex flex-col items-center justify-center transition-opacity duration-300 md:hidden ${
+        id="mobile-menu"
+        className={`fixed inset-0 z-40 bg-brand-cream flex flex-col items-center overflow-y-auto px-6 pb-12 pt-24 transition-opacity duration-300 md:hidden ${
           mobileMenuOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+            ? "visible opacity-100 pointer-events-auto"
+            : "invisible opacity-0 pointer-events-none"
         }`}
         aria-hidden={!mobileMenuOpen}
       >
@@ -134,6 +148,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
                 className={`font-serif text-3xl transition-colors ${
                   active
                     ? "text-brand-forest font-semibold"
